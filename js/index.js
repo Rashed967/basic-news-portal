@@ -17,22 +17,22 @@ const displayAllCategory = categories =>{
     categories.news_category.forEach(category => {
         const {category_id, category_name} = category;
         showAllCategoryContainer.innerHTML += `
-        <a onclick="loadSingleCategoryNews()" class="text-1xl hover:bg-stone-100 block cursor-pointer py-2 px-3 rounded-md">${category.category_name}</a>
+        <a onclick="loadSingleCategoryNews('${category_id}', '${category_name}')" class="text-1xl hover:bg-stone-100 block cursor-pointer py-2 px-3 rounded-md">${category.category_name}</a>
         `
-        console.log(category_id, category_name);
     });
 
 }
 
 // show all news in a category 
 
-const loadSingleCategoryNews = (categoryId, category_name) =>{
-    const url = `https://openapi.programming-hero.com/api/news/category/01`;
+const loadSingleCategoryNews = (categoryId, categoryName) =>{
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
         // fetchData = data.data;
         displaySingleCategoryNews(data.data)
+        
     });
 }
 
