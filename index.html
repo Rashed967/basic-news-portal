@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/29a1466319.js" crossorigin="anonymous"></script>
     
 
 
@@ -43,13 +44,80 @@
 
         <!-- alert section  -->
         <section class="container mx-auto">
-            <div class="mx-auto w-2/4 alert alert-success shadow-lg">
+            <div class="mx-auto w-2/4 alert alert-success shadow-sm">
                 <div>
                   <span>Your purchase has been confirmed!</span>
                 </div>
               </div>
         </section>
     </header>
+
+    <!-- main section on website  -->
+
+    <main>
+        <!-- filter section  -->
+        <section class="container mx-auto mt-6 flex justify-between">
+            <div class="flex gap-4 items-center">
+                <p class="font-semibold">Sort By View :</p>
+                <div>
+                    <div class="form-control w-full max-w-xs">
+                        <select class="select select-bordered">
+                          <option disabled selected>Pick one</option>
+                          <option>Star Wars</option>
+                          <option>Harry Potter</option>
+                          <option>Lord of the Rings</option>
+                          <option>Planet of the Apes</option>
+                          <option>Star Trek</option>
+                        </select>
+                      </div>
+                </div>
+            </div>
+
+            <div>
+                <button class="btn btn-success">Today’s Pick</button>
+                <button class="btn btn-outline btn-success">Trending</button>
+            </div>
+        </section>
+
+        <!-- hero-content -->
+        <!-- hero -->
+
+        <!-- show all news section  -->
+        <section class="container mx-auto mt-5">
+            <div class="p-5 rounded-md  bg-base-200">
+                <div class=" flex lg:flex-row">
+                  <img src="./images/person.jpg" class="max-w-sm rounded-lg shadow-2xl" />
+                  <div class=" flex flex-col justify-between py-2 px-6">
+                  <div class="">
+                    <h1 class="text-2xl font-bold">Box Office News!</h1>
+                    <p class="py-1">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p class="py-3">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                  </div>
+                    <div class="flex justify-between ">
+                        <div class="flex items-center gap-2">
+                            <img class="w-9 h-9" src="./images/Avatar.png" alt="">
+                            <div>
+                                <p>Jane Cooper</p>
+                                <p>Jan 10, 2022 </p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-eye"></i> <span>1.5M</span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+    </main>
 
     
 

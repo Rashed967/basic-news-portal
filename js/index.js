@@ -22,5 +22,9 @@ const displayAllCategory = categories =>{
 
 }
 
+// show all news i
+
+
+
 
 loadAllCategory();
