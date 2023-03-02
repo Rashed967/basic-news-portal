@@ -1,9 +1,9 @@
+let globalData = [];
 const loadAllCategory = async() =>{
     const url = `https://openapi.programming-hero.com/api/news/categories`
     try{
         const res = await fetch(url)
         const data = await res.json()
-        // fetch = data.data
         displayAllCategory(data.data);
     }
     catch(error){
@@ -19,31 +19,42 @@ const displayAllCategory = categories =>{
         showAllCategoryContainer.innerHTML += `
         <a onclick="loadSingleCategoryNews('${category_id}', '${category_name}')" class="text-1xl hover:bg-stone-100 block cursor-pointer py-2 px-3 rounded-md">${category.category_name}</a>
         `
+        
     });
 
 }
 
-// show all news in a category 
+// Load all news in a category 
 
 const loadSingleCategoryNews = (categoryId, categoryName) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-        // fetchData = data.data;
-        displaySingleCategoryNews(data.data)
+        globalData = data.data;
+        displaySingleCategoryNews(data.data, categoryId, categoryName, )
+        // console.log(globalData)
         
     });
 }
 
 
 // display single category newses 
-const displaySingleCategoryNews = allNews =>{
+const displaySingleCategoryNews = (allNews, categoryId, categoryName,) =>{
     const allNewsContainer = document.getElementById('all-news-container')
     allNewsContainer.innerHTML = '';
+    const newsCountElement = document.getElementById('news-count')
+    newsCountElement.innerText =  `${allNews.length}`
+    const newsCategoryElement = document.getElementById('news-category')
+   
+    // })
+    
+    newsCategoryElement.innerText = `${categoryName}`
     allNews.forEach(news => {
+
         const { title, category_id, total_view, details, image_url, author} = news;
         const {name, published_date, img} =  author;
+       
         // const sohortDescription = details.slice(0, 50);
         allNewsContainer.innerHTML += `
         <div class="p-5 mx-auto rounded-md w-10/12 bg-base-200">
@@ -82,7 +93,19 @@ const displaySingleCategoryNews = allNews =>{
     });
 }
 
-// loadSingleCategoryNews()
-// loadAllCategory();
 
-loadAllCategory()
+// todays pick section 
+
+document.getElementById('todays-pick-btn').addEventListener('click', function(){
+    const trendingNews = globalData.filter(singleData => singleData.others_info.is_todays_pick === true)
+    displaySingleCategoryNews(trendingNews)
+})
+
+document.getElementById('not-tending-btn').addEventListener('click',function(){
+    const notTrendingNews = globalData.filter(singleData => singleData.others_info.is_todays_pick === false)
+    displaySingleCategoryNews(notTrendingNews)
+})
+
+loadAllCategory();
+
+
